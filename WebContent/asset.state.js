@@ -7,23 +7,17 @@ angular
 	.module('demoApp')
 	.config(function($stateProvider, $urlRouterProvider) {
 
-	//$urlRouterProvider.otherwise("/home");
-
 	$stateProvider
-	//.state('home', {
-	//	// abstract: true,
-	//	url : "/home",
-	//	templateUrl : "home.html"
-	//})
-
-	.state('assets', {
+	
+	.state('asset', {
 		// abstract: true,
-		url : "/assets",
+		url : "/asset",
 		templateUrl : "assets.html",
 	    controller : "AssetController"
 	})
-	.state('assetnew', {
-            url: '/new',
+	.state('asset.new', {        
+		    parent: 'asset',
+		    url: '/new',
             data: {
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
@@ -37,9 +31,9 @@ angular
 
                     }
                 }).result.then(function() {
-                    $state.go('assets', null, { reload: true });
+                    $state.go('asset', null, { reload: true });
                 }, function() {
-                    $state.go('assets');
+                    $state.go('asset');
                 });
             }]
         });
