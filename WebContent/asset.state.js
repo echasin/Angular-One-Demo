@@ -1,5 +1,5 @@
 /**
- * Angular 1.0 app.state.js
+ * Angular 1.0 asset.state.js
  * 
  */
 
@@ -7,17 +7,15 @@ angular
 	.module('demoApp')
 	.config(function($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/home");
+	//$urlRouterProvider.otherwise("/home");
 
 	$stateProvider
-	.state('home', {
-		// abstract: true,
-		url : "/home",
-		templateUrl : "home.html"
-	})
+	//.state('home', {
+	//	// abstract: true,
+	//	url : "/home",
+	//	templateUrl : "home.html"
+	//})
 
-	/**
-	
 	.state('assets', {
 		// abstract: true,
 		url : "/assets",
@@ -45,5 +43,4 @@ angular
                 });
             }]
         });
-        */
 });
