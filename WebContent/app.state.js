@@ -23,10 +23,8 @@ angular
 	    controller : "AssetController"
 	})
 	.state('assetnew', {
-         //   parent: 'location',
             url: '/new',
             data: {
-         //       authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
