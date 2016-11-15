@@ -4,7 +4,9 @@
  */
 (function () {
     angular.module('demoApp', [
-        'ui.router'                    // Routing
+        'ui.router',                    // Routing
+        'ngAnimate',
+        'ui.bootstrap'
     ])
 })();
 

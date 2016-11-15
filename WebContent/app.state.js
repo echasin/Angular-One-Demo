@@ -21,8 +21,28 @@ angular
 		url : "/assets",
 		templateUrl : "assets.html",
 	    controller : "AssetController"
-	});
+	})
+	.state('assetnew', {
+         //   parent: 'location',
+            url: '/new',
+            data: {
+         //       authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'assets-dialog.html',
+                    controller: 'AssetDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+
+                    }
+                }).result.then(function() {
+                    $state.go('assets', null, { reload: true });
+                }, function() {
+                    $state.go('assets');
+                });
+            }]
+        });
 });
-
-
-
