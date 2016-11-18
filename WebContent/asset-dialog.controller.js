@@ -1,9 +1,9 @@
 /**
- * Angular 1.0 Demo AssetController
+ * Angular 1.0 Demo AssetDialogController
  *
  */
 
- console.log('In AssetController');
+ console.log('In AssetDialogController');
   
 (function() {
     'use strict';
@@ -14,11 +14,10 @@
 
     function AssetDialogController ($scope, $uibModalInstance) {
 
-    	$scope.assets = ['Asset One', 'Asset Two', 'Asset Three'];
-
-    	$scope.add=function(){
-    		console.log("Modal window has created")
+    	$scope.save=function(){
+    		console.log("Modal saving asset")
     		console.log($scope.name)
+    		$uibModalInstance.close(true);
     	}
     	
     	$scope.close=function(){
