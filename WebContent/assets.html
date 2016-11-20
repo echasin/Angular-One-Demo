@@ -11,8 +11,29 @@
 
 <button ui-sref="asset.new">Create new Asset</button>
 
-<ul>
-	<li ng-repeat="asset in assets">{{asset}}</li>
-</ul>
+<br>
+PageSize: {{pageSize}}
+<br>
+CurPageItems: {{curPage}}
+<br>
+NumberOfPages: {{numberOfPages}}
+<br>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="asset in assets">
+        <td>{{asset.name}}</td>
+      </tr>
+    </tbody> 
+  </table>
+
+
+
+
 
 </html>
