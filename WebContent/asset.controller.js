@@ -14,8 +14,8 @@
 
     function AssetController ($scope) {
     	
-    	$scope.curPage = 0;
-    	$scope.pageSize = 3;
+    	$scope.currentPage = 0;
+    	$scope.itemsPerPage = 3;
     	$scope.assets = [ {"name" : "Asset One"},
     	                  {"name" : "Asset Two"},
     	                  {"name" : "Asset Three"},
@@ -31,9 +31,36 @@
     	                  {"name" : "Asset Thirteen"}
     	                  ]
     	
-    	  $scope.numberOfPages = function() {
-    		    console.log("In $scope.numberOfPages")
-				return Math.ceil($scope.assets.length / $scope.pageSize);
-			};
+    	// for (var i=0; i<50; i++) {
+    	//	    $scope.assets.push({
+    	//	      id: i, name: "name "+ i
+    	//	    });
+    	//	  }
+    	
+    	$scope.prevPage = function() {
+    	    if ($scope.currentPage > 0) {
+    	      $scope.currentPage--;
+    	    }
+    	  };
+
+    	  $scope.prevPageDisabled = function() {
+    	    return $scope.currentPage === 0 ? "disabled" : "";
+    	  };
+
+    	  $scope.pageCount = function() {
+    	    return Math.ceil($scope.assets.length/$scope.itemsPerPage)-1;
+    	  };
+
+    	  $scope.nextPage = function() {
+    	    if ($scope.currentPage < $scope.pageCount()) {
+    	      $scope.currentPage++;
+    	    }
+    	  };
+
+    	  $scope.nextPageDisabled = function() {
+    	    return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+    	  };
+    	
+    	
     }
 })();
