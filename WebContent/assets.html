@@ -11,8 +11,58 @@
 
 <button ui-sref="asset.new">Create new Asset</button>
 
-<ul>
-	<li ng-repeat="asset in assets">{{asset}}</li>
-</ul>
+<br> <h3>ItemsPerPage:{{itemsPerPage}}</h3>
+<br> <h3>CurrentPage:{{currentPage}}</h3>
+<br> <h3>PageCounts: {{pageCount()}}</h3>
+<br>
 
+
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr
+				ng-repeat="asset in assets |
+  			offset: currentPage*itemsPerPage |
+ 			limitTo: itemsPerPage">
+				<td>{{asset.name}}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<td colspan="3">
+				<div class="pagination">
+					<ul class="pagination-controle pagination">
+						<li>
+							<button type="button" class="btn btn-primary"
+								ng-disabled="currentPage == 0" ng-click="prevPage()">&lt;
+								PREV</button>
+						</li>
+						<li>
+							<span>Page {{currentPage + 1}} of {{ pageCount()
+								}}
+							</span>
+						</li>
+						<li>
+ 							<button type="button" class="btn btn-primary"
+ 									ng-disabled="currentPage >= assets.length/itemsPerPage - 1"
+ 									ng-click="currentPage = currentPage+1">NEXT &gt;</button>
+ 						</li>
+						<!-- 
+						<li ng-class="prevPageDisabled()"><a href
+							ng-click="prevPage()">« Prev</a></li>
+						<li ng-repeat="n in range()" ng-class="{active: n == itemsPerPage}"
+							ng-click="setPage(n)"><a href="#">{{n+1}}</a></li>
+						<li ng-class="nextPageDisabled()"><a href
+							ng-click="nextPage()">Next »</a></li>
+					   -->
+					</ul>
+				</div>
+			</td>
+		</tfoot>
+	</table>
+</div>
 </html>
